@@ -1,0 +1,41 @@
+<div class="upload_page"> 
+    {% load static %}
+    <link rel="stylesheet" text="text/css" href="{% static 'style/upload_page.css' %}">
+    <h1>Upload a file here...</h1>
+<form method="POST", enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" class="btn btn-primary"> Upload it</button>
+    <form action="GET"><img src="data:image/png;base64,{{image}}"></form>
+    
+    
+</form>
+
+
+</div>
+
+<form action="regitrations.Image" method="POST" id="preview">
+    <i><input type="file" name="upload_file" class="form-control" placeholder="Enter Name" id="upload_file" onchange="getImagePreview(event)"></i>
+</form>
+
+    
+
+    <div id="preview"></div>
+    
+     <script>
+        function getImagePreview(event)
+        {
+          var image=URL.createObjectURL(event.target.files[0]);
+          var imagediv= document.getElementById('preview');
+          var newimg=document.createElement('img');
+          imagediv.innerHTML='';
+          newimg.src=image;
+          newimg.width="300";
+          imagediv.appendChild(newimg);
+        }
+     </script> 
+    
+    
+ </div>   
+
+

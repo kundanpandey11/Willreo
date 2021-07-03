@@ -1,0 +1,82 @@
+{% load static %}
+{% static "image" as baseUrl %}
+<html>
+
+<head>
+
+  <title>WillReo</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'style/main_stu.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+
+<body>
+  <div class="allof" style="background-color: rgba(82, 78, 78, 0.719);">
+    <input type="checkbox" id="check">
+    <label for="check"> <i class="fa fa-bars" id="btn"></i> <i class="fa fa-times" id="cancel"></i> </label>
+
+
+
+    <div class="sidebar">
+      <header>
+        WillReo
+      </header>
+      <ul>
+
+        <li><a href="{% url 'profile' %}"><i class="fa fa-user-circle"></i>Profile</a></li>
+        <li><a href="{% url 'help' %}"><i class="fas fa-question-circle"></i>Others</a></li>
+        <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+      </ul>
+    </div>
+
+    <nav class="container navy">
+      <div class="container nav-wrpper">
+        
+        <ul id="nav-mobile" class="right">
+          <a href="#" class="left">iTeach</a>
+          <li><a href="#">Trending</a></li>
+          <li><a href="#">Ask for help!</a></li>
+          <li><input type="text" placeholder="Search for people!" wedth=40px style="color: white;"></li>
+
+        </ul>
+      </div>
+    </nav>
+
+
+
+    {% for load in loads %}
+    <div class="vl"></div>
+    <div class="scroll_page">
+      
+      <ul>
+        <li>
+          <h4>{{load.Name}}</h4>
+        </li>
+
+        <li>
+          <img src="{{load.Image.url}}" alt="" height="400px" width="400px">
+        </li>
+        <li><button>Likes</button></li>
+        <li>
+          <p>{{load.Description}}</p>
+
+        </li>
+        <div class="line-4"><hr></div>        
+        
+      </ul>
+    </div>
+  
+
+
+    {% endfor %}
+
+    <section></section>
+  </div>
+
+</body>
+
+</html>

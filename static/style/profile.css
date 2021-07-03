@@ -1,0 +1,36 @@
+body
+{
+    background-image: url(../image/profile.jpeg);
+    background-position: center;
+    background-size: cover;
+    image-resolution: 593px x 591px;
+    font-Family: sans-serif;
+    color: #3c3939;
+    background-color: none;
+    padding-top:  4cm;
+}
+.profile-card
+{
+        width: 400px;
+        margin: auto;        
+}
+.image-container
+{
+    position: relative;
+
+}
+.info    
+{
+color: #4b4fe2;
+margin: 16px;
+
+}    
+.title    
+{
+position: #4b4fe2;
+left: 15px;
+bottom:0;
+
+}      
+ 
+

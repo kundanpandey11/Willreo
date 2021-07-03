@@ -1,0 +1,16 @@
+<html>
+<head>
+  {% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'stle/help.css' %}">
+</head>
+<body>
+  {% csrf_token %}
+  {% if user.is_authenticated %}
+{% for alluser in allusers %}
+<div class="container">
+  <h4>{{ alluser.email }}</h4>
+</div>
+{% endfor %}
+{% endif %}
+</body>
+</html>

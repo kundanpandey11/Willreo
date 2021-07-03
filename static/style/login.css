@@ -1,0 +1,84 @@
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+body{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	background: url(../image/login.jpeg) no-repeat;
+	background-size: cover;
+}
+.login-box{
+	width: 280px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+}
+.login-box h1{
+	float: top;
+	font-size: 40px;
+	border-bottom: 6px solid #000000;
+	margin-bottom: 50px;
+	padding: 13px 0;
+}
+.textbox{
+	width: 300px;
+	overflow: hidden;
+	font-size: 20px;
+	padding: 10px 0;
+	margin: 8px 0;
+	border-bottom: 2px solid #000000; 
+}
+.textbox i{
+	width: 26px;
+	float: left;
+	text-align: center;
+}
+.verification{
+	background: none;
+	padding: 3px;
+	color: black;
+	margin-bottom: 2pc solid black;
+}
+.textbox input{
+	border: none;
+	outline: none;
+	background: none;
+	color: white;
+	font-size: 18px;
+	width: 80%;
+	float: left;
+	margin: 0 10px;
+
+}
+.btn{
+	width: 250px;
+	background: none;
+	border: 2px solid #000000;
+	color: white;
+	padding: 5px 0;
+	cursor: pointer;
+	font-size: 18px;
+	margin: 12px;
+}
+.btn2{
+	width: 250px;
+	background: none;
+	border: 2px solid #000000;
+	color: white;
+	padding: 5px 0;
+	cursor: pointer;
+	font-size: 15px;
+	margin: 12px;	
+}
+.btn3{
+	width: 250px;
+	background: none;
+	border: 2px solid #000000;
+	color: white;
+	padding: 5px 0;
+	cursor: pointer;
+	font-size: 15px;
+	margin: 12px;
+	float: left;
+}
