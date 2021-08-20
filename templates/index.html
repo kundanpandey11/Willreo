@@ -1,0 +1,57 @@
+{% load static %}
+{% static "image" as baseUrl %}
+<html>
+
+<head>
+
+  <title>WillReo</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'style/index.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+
+<body>
+  <nav>
+    <div style="text-align:center; ">Logo</div>
+  </nav>
+  <div class="heading_button">
+
+    <button class="btn btn-primary btn-sm" >profile</button>
+    <button class="button btn-primary btn-danger" >help</button>
+    <button class="button btn-primary btn-bg" >about</button>
+    
+    <button class="button btn-primary btn-block" >upload</button>
+    <br><br><br><br>
+    <button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+
+<button type="button" class="btn btn-link">Link</button>
+
+
+
+
+  </div>
+  <img src="{% static 'image/tutor.jpg' %}" alt="" style="height: 5cm; width:10cm;">
+
+
+<button type="button" class="btn btn-primary btn-outline-primary">Primary</button>
+<button type="button" class="btn btn-outline-secondary">Secondary</button>
+<button type="button" class="btn btn-outline-success">Success</button>
+<button type="button" class="btn btn-outline-danger">Danger</button>
+<button type="button" class="btn btn-outline-warning">Warning</button>
+<button type="button" class="btn btn-outline-info">Info</button>
+<button type="button" class="btn btn-outline-light">Light</button>
+<button type="button" class="btn btn-outline-dark">Dark</button>
+</body>
+
+</html>

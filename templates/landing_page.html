@@ -1,0 +1,37 @@
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+</head>
+<body>
+    <h1>Welcome to iTeach Schools! </h1>
+    <div class="card">
+        <div class="card-body">
+          <a href="{% url 'login' %}"><button class="btn btn-primary btn-block">Login</button></a>
+            <button class="btn btn-primary btn-block"><a href="{% url 'register' %}">Sign Up</a></button>
+            <button class="btn btn-primary btn-block"><a href="{% url 'index' %}">Index</a></button>
+          
+        </div>
+
+        <br>
+    </div>
+    {% if user.is_authenticated %}
+    <p>Welcome, You are logged in as {{ user.username }}.
+      Please click Login to reach mainpage.s
+    </p>
+  {% else %}
+    <button><a href="{% provider_login_url 'google' %}">Login With Google</a></button>
+  {% endif %}
+
+</body>
+</html>
+
+
+<html>
+<body>
+
+</html>

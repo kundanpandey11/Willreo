@@ -41,6 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',        
+    'willreo.apps.ModifiedAccountConfig',
+    'willreo.apps.ModifiedSocialAccountConfig',    
+    'allauth.socialaccount.providers.google',    
     'crispy_forms',   
 ]
 
@@ -127,12 +132,30 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-
-
 try:
     from willreo.local_settings import *
 except ImportError:
     pass
 
-LOGIN_REDIRECT_URL = '/mainpage/stu/'
-LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'offline',
+        }
+    }
+}
+
+SITE_ID = 4
+
+LOGIN_REDIRECT_URL = '/mainpage/tea/'
+LOGOUT_REDIRECT_URL = '/'

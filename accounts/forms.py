@@ -54,3 +54,16 @@ class UserChangeForm(forms.ModelForm):
         # This is done here, rather than on the field, because the
         # field does not have access to the initial value
         return self.initial["password"]
+
+
+class AddForm(forms.ModelForm):
+
+    class Meta:
+        model = CustomUserAccounts
+        fields = ('email', 'username', 'school')
+
+        widgets = {
+            'email': forms.TextInput(attrs={'class': 'form-control'}),
+            'username': forms.TextInput(attrs={'class': 'form-control'}),
+            'school': forms.TextInput(attrs={'class': 'form-control'}),
+        }

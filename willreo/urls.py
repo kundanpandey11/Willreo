@@ -20,16 +20,21 @@ from django.conf import settings
 from django.conf.urls.static import static 
 from django.contrib.auth import views as auth_views
 from accounts.views import RegistrationView
+from iteachsgm.views import IndexView
 
 urlpatterns = [
     path('mainpage/', include('iteachsgm.urls'), name='mainpage'),
+    path('', include('accounts.urls'), name='accounts'),
+    path('accoun/', include('allauth.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', RegistrationView.as_view(), name='register'),
+    path('accounts/register/', RegistrationView.as_view(), name='register'),
     path('admin/', admin.site.urls),
+    path('index/', IndexView.as_view(), name='index' )
+    
 ]
 
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 
-# path('accounts/logouot', auth_views.LogoutView.as_view(),name='logout'),
+

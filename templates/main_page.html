@@ -26,17 +26,19 @@
         WillReo
       </header>
       <ul>
+        {% if user.is_authenticated %}
 
-        <li><a href="{% url 'upload' %}"><i class="fas fa-link"></i>Upload</a></li>         
+        <li><a href="{% url 'upload'  %}"><i class="fas fa-link"></i>Upload</a></li>
         <li><a href="{% url 'profile' %}"><i class="fa fa-user-circle"></i>Profile</a></li>
-        <li><a href="{% url 'help' %}"><i class="fas fa-question-circle">People</a></li>
+        <li><a href="{% url 'help' %}"><i class="fas fa-question-circle"></i>People</a></li>
         <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        {% endif %}
       </ul>
     </div>
 
     <nav class="container navy">
       <div class="container nav-wrpper">
-        
+
         <ul id="nav-mobile" class="right">
           <a href="#" class="left">iTeach</a>
           <li><a href="#">Trending</a></li>
@@ -50,29 +52,45 @@
 
 
     {% for load in loads %}
+
     <div class="vl"></div>
-    <div class="scroll_page">
-      
+    <div id="{{ load.id }}"  name="scroll_id" class="scroll_page">
       <ul>
+        {% if user.is_authenticated %}
         <li>
           <h4>{{load.Name}}</h4>
+          <p>Uploaded by : {{ load.creator.username }} </p>
         </li>
-
+        <li> <a href="{% url 'delete' load.id %}"><button class="btn btn-primary btn-danger">Delete</button></a>
+        </li>
+        {% endif %}
         <li>
           <img src="{{load.Image.url}}" alt="" height="400px" width="400px">
         </li>
-        <li><button>Likes</button></li>
+        <form action="{% url 'upload-likes' %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" value="{{ load.id }}" name="upload_id">
+          {% if user not in load.likes.all %}
+          <button type="submit" class="btn btn-primary btn-sm">Like</button>
+          {% else %}
+          <button type="submit" class="btn btn-primary btn-danger">Unlike</button>
+          {% endif %}
+        </form>
+        <strong>{{load.likes.all.count}} Likes</strong><br>
+        <strong>Liked by : {{load.likes.all}} </strong>
+
+
         <li>
           <p>{{load.Description}}</p>
 
         </li>
-        <div class="line-4"><hr></div>        
-        
+
+        <div class="line-4">
+          <hr>
+        </div>
+
       </ul>
     </div>
-  
-
-
     {% endfor %}
 
     <section></section>

@@ -5,7 +5,7 @@
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'tyle/profile.css' %}">
+  <link rel="stylesheet" href="{% static 'style/profile.css' %}">
 </head>
 
 <body>
@@ -17,7 +17,15 @@
       <li><h3>Username : {{ user.username}}</h3></li>
       <li><h3>Email : {{ user.email }}</h3></li>    
      <li><h3>School : {{ user.school }} </h3></li>
-    </ul>    
+    </ul>  
+    <a  href="{% url 'update_profile' user.id %}"><button class="btn btn-primary btn-block">Update Profile</button></a>
+    <a href="/mainpage/stu/"><button class="btn btn-primary btn-block" type="submit">Go Back</button></a>
+
+
+    {% block content %}
+
+    {% endblock %}
+    
     {% endif %}
   </div>
 

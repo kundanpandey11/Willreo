@@ -1,12 +1,11 @@
-from django.shortcuts import render, redirect 
 from .models import CustomUserAccounts
-from .forms import UserCreationForm, RegistrationForm
+from .forms import RegistrationForm
 from django.views.generic.edit import CreateView
-from django.views.generic import DetailView
-from django.views.generic.list import ListView
-from django.contrib.auth import login as auth_login
+from django.views.generic import TemplateView, UpdateView
 from django.urls import reverse
-
+from .forms import AddForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+# from iteachsgm.views import Profile
 
 
 class RegistrationView(CreateView):
@@ -28,16 +27,23 @@ class RegistrationView(CreateView):
             
                 
 
-# class HomeView(ListView):
-#     template_name = 'main_page_stu.html'
-#     queryset = Upload.objects.filter(flagged=False)
-#     context_object_name  = 'listings'
-#     paginate_by = 30   
+class landing_page(TemplateView):
+    template_name = 'landing_page.html'
 
            
-            
-            
-                    
+class UpdateProfile(LoginRequiredMixin, UpdateView):
+    model = CustomUserAccounts
+    form_class = AddForm
+    template_name = 'registration/update_profile.html'
+    success_url = '/mainpage/profile/'
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(UpdateProfile, self).get_context_data(**kwargs)
+    #     context['pk'] = self.objects.filter(id=self.id)# Whatever you want to add here (e.g. self.object.artist_id)
+    #     return context
+
+    # def get_success_url(self):
+        # return reverse('profile')
 
  
 
