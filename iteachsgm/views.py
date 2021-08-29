@@ -14,12 +14,12 @@ from django.conf import settings
 
 # from pybase64 import b64decode
 def upload_likes(request):
-    user = request.user    
+    user = request.user  
+    username = request.user.username  
     if request.method == 'POST':
         upload_id = request.POST.get('upload_id')
         scroll_id = request.POST.get('scroll_id')
-        upload_managing_likes = upload.objects.get(id=upload_id)
-        
+        upload_managing_likes = upload.objects.get(id=upload_id)       
 
         if user not in upload_managing_likes.likes.all():
             upload_managing_likes.likes.add(user)
@@ -31,16 +31,13 @@ def upload_likes(request):
 
 
 
-# def upload_likes(request):
-#     user = request.user
-#     upload_managing_likes = get_object_or_404(upload, id=request.POST.get('upload_id'))
-
 
 
 def upload_page(request):
     form = uploadForm()
     user = request.user
-    context = {'user':user, 'form':form}
+    creator = upload.objects.all()
+    context = {'user':user, 'form':form, 'creator':creator}
     if request.method == 'POST':
         form = uploadForm(request.POST, request.FILES)        
         if form.is_valid():          
@@ -51,6 +48,21 @@ def upload_page(request):
         else:
             form = uploadForm()
     return render(request, 'upload.html', context)
+
+
+def search_button(request):
+    search = request.POST.get('search') 
+    searched_data = True
+    emails = CustomUserAccounts.objects.filter(email__contains=search)
+    if emails.exists():
+        context = {'emails':emails}  
+        return render(request, 'search.html', context)
+    if search == None:
+        print(f"the {search} doesn't exist in database!")
+        return redirect('main_stu')
+    else:
+        print("the query doesn't exist")  
+        return redirect('main_stu')
 
 
 
@@ -68,7 +80,7 @@ class HomeView(LoginRequiredMixin ,ListView):
     template_name = 'main_page.html'
     queryset = upload.objects.all()
     context_object_name  = 'loads'
-    paginate_by = 30  
+    paginate_by = 30
 
 
 

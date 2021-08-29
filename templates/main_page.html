@@ -43,13 +43,29 @@
           <a href="#" class="left">iTeach</a>
           <li><a href="#">Trending</a></li>
           <li><a href="#">Ask for help!</a></li>
-          <li><input type="text" placeholder="Search for people!" wedth=40px style="color: white;"></li>
+          <li> 
+            
+            <form class="example" action="{% url 'search' %}" method="POST">
+              {% csrf_token %}
+            <input type="text" placeholder="Search.." name="search" required>
+            <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+                    
+            </li>
+
 
         </ul>
+        <span class="seach_result">
+          {% block content %}
+
+          {%endblock content %}
+        </span>
       </div>
     </nav>
+<br><br>
+<br><br>
 
-
+      
 
     {% for load in loads %}
 
@@ -57,11 +73,14 @@
     <div id="{{ load.id }}"  name="scroll_id" class="scroll_page">
       <ul>
         {% if user.is_authenticated %}
+        <h4>{{load.Name}}</h4>
+        <span>Uploaded by : {{ load.creator.username }}</span>
+        <span><a href="{% url 'delete' load.id %}"><button class="btn btn-primary btn-danger">Delete</button></a></span>
         <li>
-          <h4>{{load.Name}}</h4>
-          <p>Uploaded by : {{ load.creator.username }} </p>
+          
+          
         </li>
-        <li> <a href="{% url 'delete' load.id %}"><button class="btn btn-primary btn-danger">Delete</button></a>
+        <li> 
         </li>
         {% endif %}
         <li>
@@ -77,7 +96,7 @@
           {% endif %}
         </form>
         <strong>{{load.likes.all.count}} Likes</strong><br>
-        <strong>Liked by : {{load.likes.all}} </strong>
+            <strong>Liked by : {{creator.username}} </strong>
 
 
         <li>

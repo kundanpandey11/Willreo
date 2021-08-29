@@ -23,8 +23,10 @@ from accounts.views import RegistrationView
 from iteachsgm.views import IndexView
 
 urlpatterns = [
-    path('mainpage/', include('iteachsgm.urls'), name='mainpage'),
     path('', include('accounts.urls'), name='accounts'),
+    path('chat/', include('chat_app.urls'), name='chat_app'),
+    path('mainpage/', include('iteachsgm.urls'), name='mainpage'), 
+    path('orgs/', include('organization.urls'), name='organization'),   
     path('accoun/', include('allauth.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/register/', RegistrationView.as_view(), name='register'),
@@ -38,3 +40,12 @@ urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.ME
 
 
 
+"""
+accounts/logout/ [name='logout']
+accounts/password_change/ [name='password_change']
+accounts/password_change/done/ [name='password_change_done']
+accounts/password_reset/ [name='password_reset']
+accounts/password_reset/done/ [name='password_reset_done']
+accounts/reset/<uidb64>/<token>/ [name='password_reset_confirm']
+accounts/reset/done/ [name='password_reset_complete']
+"""

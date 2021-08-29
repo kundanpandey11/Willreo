@@ -35,6 +35,8 @@ AUTH_USER_MODEL = 'accounts.CustomUserAccounts'
 INSTALLED_APPS = [
     'iteachsgm.apps.IteachsgmConfig',
     'accounts.apps.AccountsConfig',
+    'organization',
+    'chat_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
