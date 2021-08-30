@@ -1,0 +1,11 @@
+{% extends 'main_page.html' %}
+
+{% block content %}
+{% for email in emails %}
+   <button type="submit" >{{email}}</button>
+
+
+   
+{%endfor%}
+
+{% endblock content %}

@@ -1,0 +1,6 @@
+<form action="{% url 'create-organization' %}" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit" class="btn btn-primary btn-block ">Create Organization</button>
+
+</form>
